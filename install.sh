@@ -110,20 +110,17 @@ if [[ "$os" == "darwin" ]]; then
 	install_dir=/usr/local
     fi
 else
-    install_dir=$HOME/.hyprspace
+    install_dir=/usr
 fi
+
 
 curl --fail --location --progress-bar --output hyprspace https://github.com/hyprspace/hyprspace/releases/download/$latest/hyprspace-$latest-$os-$arch
 chmod a+x hyprspace
 
-if [[ "$os" == "darwin" ]]; then
-    echo "Install requires root permissions to write to $install_dir"
-    execute_sudo mkdir -p $install_dir/bin
-    execute_sudo mv hyprspace $install_dir/bin/hyprspace
-else
-    execute mkdir -p $install_dir/bin
-    execute mv hyprspace $install_dir/bin/hyprspace
-fi
+echo "Install requires root permissions to write to $install_dir/bin/hyprspace"
+execute_sudo mkdir -p $install_dir/bin
+execute_sudo mv hyprspace $install_dir/bin/hyprspace
+
 
 echo ""
 echo "Hyprspace was installed successfully to $install_dir/bin/hyprspace"
