@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 set -e
 
@@ -113,7 +113,7 @@ else
     install_dir=$HOME/.hyprspace
 fi
 
-curl --fail --location --progress-bar --output hyprspace https://github.com/arken/ark/releases/download/$latest/ark-$latest-$os-$arch
+curl --fail --location --progress-bar --output hyprspace https://github.com/hyprspace/hyprspace/releases/download/$latest/hyprspace-$latest-$os-$arch
 chmod a+x hyprspace
 
 if [[ "$os" == "darwin" ]]; then
