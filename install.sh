@@ -92,7 +92,7 @@ execute_sudo() {
 
 # Use uname to determine the computer's ARCH and OS.
 os=$( echo "$(uname -s)" | tr -s  '[:upper:]'  '[:lower:]' )
-arch=$( echo "$(uname -m)" | tr -s  '[:upper:]'  '[:lower:]' )
+arch=$( echo "$(uname -m)" )
 
 # Get the latest tagged release from GitHub.
 latest=$(get_latest_release)
@@ -101,6 +101,10 @@ echo "Downloading Hyprspace..."
 
 if [ "$arch" == "x86_64" ]; then
         arch="amd64"
+fi
+
+if [[ "$arch" == "aarch64" ]]; then
+        arch="arm64"
 fi
 
 if [[ "$os" == "darwin" ]]; then
